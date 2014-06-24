@@ -19,9 +19,11 @@ class ProductsController < ApplicationController
   	@product = Product.new(product_params)
 
   	if @product.save
-  		redirect_to products_url
+  		# this sends a 302 redirect
+      redirect_to products_url
   	else
-  		render :new
+  		# this sends a 200 and sends a 'new' template
+      render :new
   	end
   end
 
@@ -29,9 +31,11 @@ class ProductsController < ApplicationController
   	@product = Product.find(params[:id])
 
   	if @product.update_attributes(product_params)
-  		redirect_to product_path(@product)
+  		# this sends a 302 redirect
+      redirect_to product_path(@product)
   	else
-  		render :edit
+  		# this sends a 200 and sends an 'edit' template
+      render :edit
   	end
   end
 
