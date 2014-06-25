@@ -4,7 +4,15 @@ class ProductsController < ApplicationController
   end
 
   def show
-  	@product = find_product
+
+    # refactored code to replace @product = Product.find(params[:id])
+    # see method in 'Private', below
+    @product = find_product
+
+    # from section 12 - filters code for product review
+    if current_user
+      @review = @product.reviews.build
+    end
   end
 
   def new
